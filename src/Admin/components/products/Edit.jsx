@@ -19,12 +19,9 @@ import {
   Button,
   CircularProgress,
   Fab,
-  Input,
   TextField,
   Tooltip,
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
 import DoneIcon from "@mui/icons-material/Done";
 import ImgUpload from "./ImgUpload";
 const Detail = () => {
@@ -37,7 +34,7 @@ const Detail = () => {
   };
 
   // param in url
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
 
   // redux
   const product = useSelector(singleProductsSelector);
@@ -45,13 +42,13 @@ const Detail = () => {
 
   //state
   const [updatedProduct, setUpdatedProduct] = useState({ ...product });
-  const [numberSelected, setNumberSelected] = useState(0);
+  const [numberSelected] = useState(0);
 
   useEffect(() => {
     dispatch(getSingleProduct(searchParams.get("id")));
     window.scrollTo(0, 0);
     setUpdatedProduct({ ...product });
-  }, [dispatch]);
+  }, [dispatch, product, searchParams]);
   useEffect(() => {
     setUpdatedProduct({ ...product });
   }, [product]);
@@ -379,56 +376,6 @@ const Wrap = styled.div`
 const Container = styled.div`
   width: 100%;
   max-width: 700px;
-`;
-const Img = styled.img`
-  object-fit: cover;
-  width: 100%;
-`;
-const Label = styled.label`
-  min-width: 100px;
-`;
-const Span = styled.span`
-  color: #8d95b4;
-`;
-const ContainerComment = styled.div``;
-const Header = styled.div``;
-const Heading = styled.h3``;
-const Table = styled.table`
-  border-collapse: collapse;
-  width: 100%;
-  table-layout: auto;
-  margin: 14px 0 28px;
-`;
-const Tr = styled.tr`
-  &:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  &:hover {
-    background-color: #ddd;
-  }
-`;
-const Td = styled.td`
-  border: 1px solid #ddd;
-  padding: 8px;
-  &:nth-child(1) {
-    width: 150px;
-  }
-  &:nth-child(3) {
-    color: red;
-  }
-  text-overflow: ellipsis;
-`;
-const Th = styled.th`
-  border: 1px solid #ddd;
-  padding: 8px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04aa6d;
-  color: white;
-  &:nth-child(3) {
-    color: blue;
-  }
 `;
 
 export default Detail;

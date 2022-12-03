@@ -9,7 +9,6 @@ import swal from "sweetalert";
 import {
   Search,
   Input,
-  ImgAvatar,
   Avatar,
   HeaderWrapper,
   Icon,

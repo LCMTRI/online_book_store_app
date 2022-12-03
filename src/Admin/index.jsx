@@ -12,8 +12,9 @@ const Admin = () => {
     if (!sessionStorage.getItem("admin")) {
       navigate("/admin/login");
     }
-  }, []);
+  }, [navigate]);
   const [toogleNav, setToogleNav] = useState(true);
+  // eslint-disable-next-line no-unused-vars
   const [idOnClick, setIdOnClick] = useState(0);
   const width = window.innerWidth;
   return (

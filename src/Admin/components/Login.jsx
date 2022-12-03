@@ -115,7 +115,7 @@ const Login = () => {
     if (sessionStorage.getItem("admin")) {
       navigate("/admin");
     }
-  }, []);
+  }, [navigate]);
   const handleLogin = async () => {
     const res = await axios.post(
       "http://localhost/ecommerce/backend/api/auth/loginAdmin.php",

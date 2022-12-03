@@ -95,7 +95,7 @@ export const deleteImg = createAsyncThunk("product/img/delete", async (id) => {
 export const toggleStatus = createAsyncThunk(
   "product/togglestatus",
   async (id) => {
-    const res = await axios.get(
+    await axios.get(
       `http://localhost/ecommerce/backend/api/product/status.php?id=${id}`
     );
     return id;
@@ -216,6 +216,7 @@ const productsSlice = createSlice({
     },
     [deleteImg.fulfilled]: (state, action) => {
       console.log("Done delte");
+      // eslint-disable-next-line array-callback-return
       const imgListFilter = state.product.imgList.filter((item) => {
         if (item.id !== action.payload) return item;
       });

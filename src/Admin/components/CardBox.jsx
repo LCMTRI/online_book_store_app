@@ -13,7 +13,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import {
-  Icon,
   CardContainer,
   Card,
   CardLeft,

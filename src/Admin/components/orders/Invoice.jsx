@@ -131,14 +131,14 @@ const ContentInfo = styled.span`
 `;
 const Invoice = () => {
   // param
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
 
   // redux
   const order = useSelector(orderSingleSelector);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getOrder(searchParams.get("id")));
-  }, [dispatch]);
+  }, [dispatch, searchParams]);
   return (
     <Wraper>
       <Header>

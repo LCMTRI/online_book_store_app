@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { MdModeEditOutline } from "react-icons/md";
-import { AiFillDelete, AiFillEye } from "react-icons/ai";
+import { AiFillEye } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changeStateOrder,
@@ -11,8 +10,7 @@ import {
   ordersSelector,
 } from "../../store/reducers/ordersSlice";
 import { useEffect } from "react";
-import { Button, Menu, MenuItem } from "@mui/material";
-import { ArrowDropDownCircleOutlined } from "@mui/icons-material";
+import { Menu, MenuItem } from "@mui/material";
 import swal from "sweetalert";
 // import { GrFormView } from "react-icons/gr";
 const Wraper = styled.div`
@@ -49,7 +47,7 @@ const Span = styled.span`
 `;
 const Orders = () => {
   // state
-  const [listStatus, setListStatus] = useState([
+  const [listStatus] = useState([
     "Pending",
     "Delivering",
     "Delivered",
@@ -87,7 +85,7 @@ const Orders = () => {
   // effect
   useEffect(() => {
     dispatch(getAllOrder());
-  }, []);
+  }, [dispatch]);
   if (!allOrder) return <h1>No order here</h1>;
   return (
     <Wraper>
@@ -156,18 +154,20 @@ const Orders = () => {
                 "aria-labelledby": "basic-button",
               }}
             >
-              {listStatus.map((item) => {
-                if (item !== stateTemp.state) {
-                  return (
-                    <MenuItem
-                      key={item}
-                      onClick={() => handleChangeState(stateTemp.id, item)}
-                    >
-                      {item}
-                    </MenuItem>
-                  );
-                }
-              })}
+              {
+                // eslint-disable-next-line array-callback-return
+                listStatus.map((item) => {
+                  if (item !== stateTemp.state) {
+                    return (
+                      <MenuItem
+                        key={item}
+                        onClick={() => handleChangeState(stateTemp.id, item)}
+                      >
+                        {item}
+                      </MenuItem>
+                    );
+                  }
+                })}
             </Menu>
           </tbody>
         </Table>

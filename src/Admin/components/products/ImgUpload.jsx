@@ -1,4 +1,4 @@
-import { Box, Button, ImageListItem } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import ReactImageUploading from "react-images-uploading";
@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import swal from "sweetalert";
 import {
   createImg,
-  getImgForProduct,
 } from "../../store/reducers/productsSlice";
 
 const ImgUpload = ({ idProduct }) => {
