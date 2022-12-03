@@ -130,7 +130,7 @@ export default function Comments({ id }) {
   };
   React.useEffect(() => {
     dispatch(getCommentById(id));
-  }, [id]);
+  }, [dispatch, id]);
   if (comments.message) return <h1>No comment For product</h1>;
   return (
     <TableContainer

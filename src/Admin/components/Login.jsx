@@ -115,7 +115,7 @@ const Login = () => {
     if (sessionStorage.getItem("admin")) {
       navigate("/admin");
     }
-  }, []);
+  }, [navigate]);
   const handleLogin = async () => {
     const res = await axios.post(
       `${process.env.REACT_APP_BACKEND_ROOT}/api/auth/loginAdmin.php`,

@@ -1,4 +1,3 @@
-import { Children } from "react";
 import styled from "styled-components";
 export const Container = styled.div`
   position: fixed;
@@ -115,7 +114,7 @@ export const Title = styled.span`
 export const Main = styled.div`
   position: absolute;
   transition: 0.5s;
-  width: ${(props) => "calc(100%" + " - " + parseInt(props.width) + "px)"};
+  width: ${(props) => "calc(100% - " + parseInt(props.width) + "px)"};
   left: ${(props) => props.width};
 `;
 export const Wraper = styled.div`
