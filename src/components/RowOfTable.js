@@ -48,7 +48,7 @@ const RowOfTable = (props) => {
     };
     axios
       .post(
-        "http://localhost/ecommerce/backend/api/cart/updateitems.php",
+        `${process.env.REACT_APP_BACKEND_ROOT}/api/cart/updateitems.php`,
         data,
         config
       )

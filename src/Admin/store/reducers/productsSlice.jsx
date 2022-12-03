@@ -6,7 +6,7 @@ export const getProducts = createAsyncThunk(
   "products/productsFetched",
   async () => {
     const response = await axios.get(
-      "http://localhost/ecommerce/backend/api/product/read.php"
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/product/read.php`
     );
     return response.data.data;
   }
@@ -15,7 +15,7 @@ export const updateProduct = createAsyncThunk(
   "product/singleProductUpdate",
   async (updatedProduct) => {
     const response = await axios.put(
-      "http://localhost/ecommerce/backend/api/product/update.php",
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/product/update.php`,
       updatedProduct
     );
     return response.data;
@@ -25,7 +25,7 @@ export const getImgForProduct = createAsyncThunk(
   "product/singleimg",
   async (id) => {
     const res = await axios.get(
-      `http://localhost/ecommerce/backend/api/imgProduct/read_single.php?id=${id}`
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/imgProduct/read_single.php?id=${id}`
     );
     return res.data;
   }
@@ -36,10 +36,10 @@ export const getSingleProduct = createAsyncThunk(
     const response = await axios
       .all([
         axios.get(
-          `http://localhost/ecommerce/backend/api/product/read_single.php?id=${id}`
+          `${process.env.REACT_APP_BACKEND_ROOT}/api/product/read_single.php?id=${id}`
         ),
         axios.get(
-          `http://localhost/ecommerce/backend/api/imgProduct/read_single.php?id=${id}`
+          `${process.env.REACT_APP_BACKEND_ROOT}/api/imgProduct/read_single.php?id=${id}`
         ),
       ])
       .then(
@@ -69,7 +69,7 @@ export const createImg = createAsyncThunk(
       },
     };
     const res = await axios.post(
-      `http://localhost/ecommerce/backend/api/imgProduct/create.php?id=${id}`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/imgProduct/create.php?id=${id}`,
       {
         url: url,
       },
@@ -86,7 +86,7 @@ export const deleteImg = createAsyncThunk("product/img/delete", async (id) => {
     },
   };
   const res = await axios.delete(
-    `http://localhost/ecommerce/backend/api/imgProduct/delete.php?id=${id}`,
+    `${process.env.REACT_APP_BACKEND_ROOT}/api/imgProduct/delete.php?id=${id}`,
     config
   );
   return parseInt(res.data.id);
@@ -96,7 +96,7 @@ export const toggleStatus = createAsyncThunk(
   "product/togglestatus",
   async (id) => {
     const res = await axios.get(
-      `http://localhost/ecommerce/backend/api/product/status.php?id=${id}`
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/product/status.php?id=${id}`
     );
     return id;
   }

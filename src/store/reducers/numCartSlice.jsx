@@ -4,7 +4,7 @@ import axios from "axios";
 // Reducer Thunk
 export const getNumCart = createAsyncThunk("numcart", async () => {
   const response = await axios.get(
-    `http://localhost/ecommerce/backend/api/cart/getCountCart.php?user_id=${sessionStorage.getItem(
+    `${process.env.REACT_APP_BACKEND_ROOT}/api/cart/getCountCart.php?user_id=${sessionStorage.getItem(
       "user_id"
     )}`
   );

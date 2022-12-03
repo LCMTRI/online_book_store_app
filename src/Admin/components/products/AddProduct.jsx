@@ -171,7 +171,7 @@ const AddProduct = () => {
     );
     // post
     const res2 = await axios.post(
-      "http://localhost/ecommerce/backend/api/product/create.php",
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/product/create.php`,
       {
         ...newProduct,
         img_cover: res.data.url,
@@ -189,7 +189,7 @@ const AddProduct = () => {
       const url = await getUrlFormImgAdd(element.file);
 
       await axios.post(
-        `http://localhost/ecommerce/backend/api/imgProduct/create.php?id=${res2.data.product_id}`,
+        `${process.env.REACT_APP_BACKEND_ROOT}/api/imgProduct/create.php?id=${res2.data.product_id}`,
         {
           url: url,
         },

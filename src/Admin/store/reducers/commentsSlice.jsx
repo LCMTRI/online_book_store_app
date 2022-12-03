@@ -4,7 +4,7 @@ import axios from "axios";
 // Reducer Thunk
 export const getCommentById = createAsyncThunk("comment/id", async (id) => {
   const response = await axios.get(
-    `http://localhost/ecommerce/backend/api/comment/read_single.php?product_id=${id}`
+    `${process.env.REACT_APP_BACKEND_ROOT}/api/comment/read_single.php?product_id=${id}`
   );
   return response.data;
 });
@@ -12,7 +12,7 @@ export const removeCommentById = createAsyncThunk(
   "comment/delete",
   async (id) => {
     const res = await axios.delete(
-      `http://localhost/ecommerce/backend/api/comment/delete.php?id=${id}`
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/comment/delete.php?id=${id}`
     );
     return res.data.id;
   }

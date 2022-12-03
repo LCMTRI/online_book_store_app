@@ -13,7 +13,7 @@ export default function Password () {
     useEffect(() => {
         const fetchUser = async () => {
             const id = sessionStorage.getItem('user_id')
-            const res = await axios.get('http://localhost/ecommerce/backend/api/user/getUser.php?user_id=' + id);
+            const res = await axios.get(`${process.env.REACT_APP_BACKEND_ROOT}/api/user/getUser.php?user_id=` + id);
             setUserInfor(res.data.data[0])
           }
           fetchUser()
@@ -37,7 +37,7 @@ export default function Password () {
         }
         console.log("data->>>>>", data)
        
-        axios.post("http://localhost/ecommerce/backend/api/user/update_pass.php", data)
+        axios.post(`${process.env.REACT_APP_BACKEND_ROOT}/api/user/update_pass.php`, data)
             .then((response) => {
                 console.log("test" ,response);
                 if(response.data.status === 'Success')  swal("Completely!", "Change password success", "success");

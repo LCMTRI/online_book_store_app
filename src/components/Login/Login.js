@@ -27,7 +27,7 @@ const Login = (props) => {
       password: password,
     };
     axios
-      .post(`http://localhost/ecommerce/backend/api/auth/login.php`, data)
+      .post(`${process.env.REACT_APP_BACKEND_ROOT}/api/auth/login.php`, data)
       .then(function (response) {
         console.log(response.data);
         if (response.data.status === "Success") {
@@ -65,7 +65,7 @@ const Login = (props) => {
         "https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png",
     };
     const res = await axios.post(
-      `http://localhost/ecommerce/backend/api/auth/register.php`,
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/auth/register.php`,
       data
     );
     console.log(res.data);

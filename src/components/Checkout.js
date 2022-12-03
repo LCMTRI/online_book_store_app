@@ -32,7 +32,7 @@ const Checkout = () => {
             address: address,
             cart: lstCart
         }
-        axios.post("http://localhost/ecommerce/backend/api/order/create.php", data)
+        axios.post(`${process.env.REACT_APP_BACKEND_ROOT}/api/order/create.php`, data)
             .then((response) => {
                 console.log(response.data);
             })
@@ -47,14 +47,14 @@ const Checkout = () => {
                 "Content-Type": "multipart/form-data",
             },
             };
-        axios.post("http://localhost/ecommerce/backend/api/cart/deleteAll.php", data_delete, config)
+        axios.post(`h${process.env.REACT_APP_BACKEND_ROOT}/api/cart/deleteAll.php`, data_delete, config)
             .then((response) => {
                 console.log(response.data);
             }); 
             navigate("../");
     }
     useEffect(() => {
-        axios.get(`http://localhost/ecommerce/backend/api/cart/finditems.php?user_id=${sessionStorage.getItem('user_id')}`).then((response) => {
+        axios.get(`${process.env.REACT_APP_BACKEND_ROOT}/api/cart/finditems.php?user_id=${sessionStorage.getItem('user_id')}`).then((response) => {
             if (response.data.data) setLstCart(response.data.data);
             console.log(response.data.message);
         });

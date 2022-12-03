@@ -32,7 +32,7 @@ export default function Information(props) {
         url_avt: url,
       };
       axios
-        .post("http://localhost/ecommerce/backend/api/user/updateImg.php", data)
+        .post(`${process.env.REACT_APP_BACKEND_ROOT}/api/user/updateImg.php`, data)
         .then((response) => {
           console.log(response);
         });
@@ -43,7 +43,7 @@ export default function Information(props) {
     const fetchUser = async () => {
       const id = sessionStorage.getItem("user_id");
       const res = await axios.get(
-        "http://localhost/ecommerce/backend/api/user/getUser.php?user_id=" + id
+        `${process.env.REACT_APP_BACKEND_ROOT}/api/user/getUser.php?user_id=` + id
       );
       setUserInfor(res.data.data[0]);
     };
@@ -77,7 +77,7 @@ export default function Information(props) {
     };
     console.log("data->>>>>", data);
     axios
-      .post("http://localhost/ecommerce/backend/api/user/update.php", data)
+      .post(`${process.env.REACT_APP_BACKEND_ROOT}/api/user/update.php`, data)
       .then((response) => {
         console.log(response);
       });

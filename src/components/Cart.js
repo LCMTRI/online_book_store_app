@@ -94,7 +94,7 @@ const Cart = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost/ecommerce/backend/api/cart/finditems.php?user_id=${sessionStorage.getItem(
+        `${process.env.REACT_APP_BACKEND_ROOT}/api/cart/finditems.php?user_id=${sessionStorage.getItem(
           "user_id"
         )}`
       )

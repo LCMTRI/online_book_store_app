@@ -149,7 +149,7 @@ const Detail = () => {
     };
     console.log("data feedback: ", data);
     await axios
-      .post("http://localhost/ecommerce/backend/api/comment/create.php", data)
+      .post(`${process.env.REACT_APP_BACKEND_ROOT}/api/comment/create.php`, data)
       .then((response) => {
         console.log(response.data);
         if (response.data.message === 0) {
@@ -180,7 +180,7 @@ const Detail = () => {
     console.log("update rating: ", data_updateRating);
     await axios
       .post(
-        "http://localhost/ecommerce/backend/api/product/updateRating.php",
+        `${process.env.REACT_APP_BACKEND_ROOT}/api/product/updateRating.php`,
         data_updateRating
       )
       .then((response) => {
@@ -202,7 +202,7 @@ const Detail = () => {
     };
     console.log("data addToCart: ", data);
     await axios
-      .post("http://localhost/ecommerce/backend/api/cart/addToCart.php", data)
+      .post(`${process.env.REACT_APP_BACKEND_ROOT}/api/cart/addToCart.php`, data)
       .then((response) => {
         console.log(response.data);
         if (response.data.message === 0) {
@@ -215,7 +215,7 @@ const Detail = () => {
   };
   const getComment = async () => {
     const res_comment = await axios.get(
-      "http://localhost/ecommerce/backend/api/comment/read_single.php?product_id=" +
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/comment/read_single.php?product_id=` +
         String(product_id)
     );
     console.log("comment: ", res_comment.data);
@@ -232,7 +232,7 @@ const Detail = () => {
   };
   const getUser = async () => {
     const user = await axios.get(
-      "http://localhost/ecommerce/backend/api/user/getUser.php?user_id=" +
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/user/getUser.php?user_id=` +
         sessionStorage.getItem("user_id")
     );
     console.log("user: ", user.data.data[0]);
@@ -241,11 +241,11 @@ const Detail = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await axios.get(
-        "http://localhost/ecommerce/backend/api/product/read_single.php?id=" +
+        `${process.env.REACT_APP_BACKEND_ROOT}/api/product/read_single.php?id=` +
           String(product_id)
       );
       const res_img = await axios.get(
-        "http://localhost/ecommerce/backend/api/imgProduct/read_single.php?id=" +
+        `${process.env.REACT_APP_BACKEND_ROOT}/api/imgProduct/read_single.php?id=` +
           String(product_id)
       );
       let _product = res.data;
@@ -259,7 +259,7 @@ const Detail = () => {
       getUser();
 
       const res_similarProduct = await axios.get(
-        "http://localhost/ecommerce/backend/api/product/read.php"
+        `${process.env.REACT_APP_BACKEND_ROOT}/api/product/read.php`
       );
       console.log("similarProduct: ", res_similarProduct.data.data);
       // similarProduct = res_similarProduct.data.data;

@@ -118,7 +118,7 @@ const Login = () => {
   }, []);
   const handleLogin = async () => {
     const res = await axios.post(
-      "http://localhost/ecommerce/backend/api/auth/loginAdmin.php",
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/auth/loginAdmin.php`,
       {
         username: username,
         password: password,

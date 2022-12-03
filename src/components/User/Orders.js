@@ -17,7 +17,7 @@ const Orders = () => {
     };
     console.log(data)
     axios
-      .post(`http://localhost/ecommerce/backend/api/order/cancel.php`, data)
+      .post(`${process.env.REACT_APP_BACKEND_ROOT}/api/order/cancel.php`, data)
       .then(function (response) {
         console.log(response.data);
         if (response.data.status === "Success") {
@@ -34,7 +34,7 @@ const Orders = () => {
   const fetchOrders = async () => {
     const id = sessionStorage.getItem("user_id");
     const res = await axios.get(
-      "http://localhost/ecommerce/backend/api/order/read_single_user.php?user_id=" +
+      `${process.env.REACT_APP_BACKEND_ROOT}/api/order/read_single_user.php?user_id=` +
         id
     );
     setOrders(res.data.data);
