@@ -2,7 +2,7 @@ import styled from "styled-components";
 // // import { Container, Row, Col } from "react-grid-system";
 import Header from "./Header";
 import Footer from "./Footer";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button, Carousel, Modal } from "react-bootstrap";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
@@ -16,7 +16,6 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import axios from "axios";
 import swal from "sweetalert";
-import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addCart } from "../store/reducers/numCartSlice";
 function TableRow(props) {
@@ -87,14 +86,9 @@ const Detail = () => {
   // const id = new URLSearchParams(search).get('id');
   let { product_id } = useParams();
   let navigate = useNavigate();
-  let sampleCarousel = [
-    "https://images.fpt.shop/unsafe/filters:quality(90)/fptshop.com.vn/uploads/images/tin-tuc/133670/Originals/acer-nitro-5-an515-55-1(1).jpg",
-    // "https://mayxaugiacao.com/wp-content/uploads/2022/02/top-laptop-dell-tot-nhat-2022.jpg",
-    // "https://product.hstatic.net/1000233206/product/lg-gram-2021-14zd90p-g-ax51a5-1_10ebeafae1d64bc5a00168a46e9db5b6_master.png",
-    // "https://product.hstatic.net/1000233206/product/lg_gram_2021_16z90p-g.ah73a5-4_2e805f4b5f6b4cd4be72510dbc729944_master.png",
-    "https://innovavietnam.vn/wp-content/uploads/poster-561x800.jpg",
-  ];
+  
   const [product, setProduct] = useState({});
+  // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState({});
   const [comment, setComment] = useState([]);
   const [ratingStar, setRatingStar] = useState(4);
@@ -138,7 +132,6 @@ const Detail = () => {
     }
   };
   const handleRating = async () => {
-    var today = new Date();
     // let datetime = today.getFullYear() + ':' + today.getMonth() + ':' + today.getDate() + ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
     let data = {
       product_id: product_id,
@@ -213,7 +206,7 @@ const Detail = () => {
         }
       });
   };
-  const getComment = async () => {
+  const getComment = useCallback(async () => {
     const res_comment = await axios.get(
       "http://localhost/ecommerce/backend/api/comment/read_single.php?product_id=" +
         String(product_id)
@@ -229,7 +222,7 @@ const Detail = () => {
     console.log("ratingInfo: ", _rating);
     setComment(res_comment.data);
     setRatingInfo(_rating);
-  };
+  }, [product_id]);
   const getUser = async () => {
     const user = await axios.get(
       "http://localhost/ecommerce/backend/api/user/getUser.php?user_id=" +
@@ -267,7 +260,7 @@ const Detail = () => {
     };
     window.scrollTo(0, 0);
     getData();
-  }, []);
+  }, [getComment, product_id]);
 
   // tab is about product or specs
   const [tab, setTab] = useState(0);

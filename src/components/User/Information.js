@@ -56,7 +56,7 @@ export default function Information(props) {
       let date = e.target.value;
 
       let datearray = date.split("-");
-      let newdate = datearray[2] + "-" + datearray[1] + "-" + datearray[0];
+      newdate = datearray[2] + "-" + datearray[1] + "-" + datearray[0];
     }
     setUserInfor({
       ...userInfor,
@@ -65,7 +65,7 @@ export default function Information(props) {
   };
   const onSave = () => {
     let re =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(userInfor.email)) {
       NotificationManager.error("Email not true !!!", "Error Email!", 3000);
       return;

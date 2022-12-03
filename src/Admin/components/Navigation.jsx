@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineHome, AiOutlineMenu, AiFillFileAdd } from "react-icons/ai";
+import { AiOutlineHome, AiFillFileAdd } from "react-icons/ai";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FaProductHunt, FaFirstOrder } from "react-icons/fa";
 import {
   Container,
   Header,
-  Img,
   Heading,
   List,
   Item,
@@ -24,7 +22,6 @@ const Navigation = ({ toogleNav, setIdOnClick }) => {
     if (textPath === "customer") return 2;
     if (textPath === "orders") return 3;
   };
-  const width = window.innerWidth;
   const [IdClick, setIdClick] = useState(getId());
   return (
     <Container toogle={!toogleNav}>

@@ -19,8 +19,6 @@ import Login from "./components/Login/Login";
 import { useEffect, useState } from "react";
 import About from "./components/About";
 import News from "./components/News";
-import { Provider } from "react-redux";
-import store from "./store";
 function App() {
   const [user, setUser] = useState(null);
   useEffect(() => {
