@@ -53,7 +53,7 @@ const Header = (props) => {
             className="d-flex flex-row align-items-center"
           >
             <img
-              src="https://www.hcmut.edu.vn/images/hcmut/logoBK.png"
+              src={require("./images/hcmut.png")}
               alt="Logo HCMUT"
               width="55"
               height="55"

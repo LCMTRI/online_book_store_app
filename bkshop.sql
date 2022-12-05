@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `bkshop`
 --
-
+DROP DATABASE IF EXISTS bkshop;
+CREATE DATABASE bkshop;
 -- --------------------------------------------------------
 
 --
@@ -38,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `username`, `password`) VALUES
-(1, 'hoangkui', '$2y$10$evD4mFDUA3eogKcW8ON9x.gVUL8Y4W6qDk.FYYEw10EXoN4taZEbC');
+(1, 'datkui', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm');
 
 -- --------------------------------------------------------
 
@@ -77,10 +78,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `fName`, `lName`, `email`, `phone`, `birthday`, `url_avt`, `isBlocked`) VALUES
-(1, 'an', '$2y$10$2oh/7z/zop6LA0MOQ68QluBjKH/ePAgjuI.DxA8y8YJYNkCA4Yrf2', 'An', 'Đình', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
-(2, 'hoang', '$2y$10$bUKn2wmkuzZHZAhFycNAhO2UmvN6oJDXVM40pkWVSV1J5EEKKFu4a', 'Nguyễn Trần', 'Hoàng', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
-(3, 'binh', '$2y$10$k7KP2LWDLM26f8AZXxLCI.lrno42MFYGi3F33C4VpOLCueQmWv8FO', 'Cao Thanh', 'Bình', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
-(4, 'long', '$2y$10$L9Cwb.lPwmrcV7DfZs7Q..SebOjeKAn8yFx7WU03oB8/wzlfZ83uq', 'Nguyễn Thành', 'Long', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0);
+(1, 'tri', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Lê Cao Minh', 'Trí', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
+(2, 'dat', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Đào Xuân', 'Đạt', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
+(3, 'an', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Dư Văn', 'An', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0),
+(4, 'vinh', '$2y$10$sH9P2JH135RLI381/x6UPun5kRiFSm3DZljaDraPylq9spbfA5Yqm', 'Nguyễn Phúc', 'Vinh', '', '', '0000-00-00', 'https://www.seekpng.com/png/full/514-5147412_default-avatar-icon.png', 0);
 
 -- --------------------------------------------------------
 

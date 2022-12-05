@@ -26,7 +26,7 @@ const News = () => {
             </Content>
           </Post>
           <Post>
-            <Img src="http://winplasplas.com/wp-content/uploads/2021/06/mchin_180905_4061_0006.0.jpg" />
+            <Img src="https://images.businessnewsdaily.com/app/uploads/2022/04/04074553/1554244010.jpeg" />
             <Content>
               <Title>How to choose the fastest laptop?</Title>
               <Date>2022-06-09</Date>

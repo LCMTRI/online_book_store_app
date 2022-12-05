@@ -7,26 +7,26 @@ const Footer = () => {
   return (
     <div>
       <Row>
-        <Logo src="https://www.hcmut.edu.vn/images/hcmut/logoBK.png" alt="Logo HCMUT" />
+        <Logo src={require("./images/hcmut.png")} alt="Logo HCMUT" style={{width: "180px", height: "180px"}}/>
         <Infor>
           <InforTitle>Team members</InforTitle>
-          <InforItem>Nguyen Dinh An</InforItem>
-          <InforItem>Cao Thanh Binh</InforItem>
-          <InforItem>Nguyen Tran Hoang</InforItem>
-          <InforItem>Nguyen Thanh Long</InforItem>
+          <InforItem>Le Cao Minh Tri</InforItem>
+          <InforItem>Dao Xuan Dat</InforItem>
+          <InforItem>Du Van An</InforItem>
+          <InforItem>Nguyen Phuc Vinh</InforItem>
         </Infor>
         <Infor>
           <InforTitle>Address</InforTitle>
           <InforIcon>
             <Home />
-            <InforItem>1234 Street Adress City Address, US</InforItem></InforIcon>
+            <InforItem>420 Đông Hòa, Dĩ An, Bình Dương</InforItem></InforIcon>
           <InforIcon>
             <LocalPhone />
-            <InforItem>(00) 1234 5678</InforItem>
+            <InforItem>(+84)969 696 969</InforItem>
           </InforIcon>
           <InforIcon>
             <AccessTime />
-            <InforItem>Monday-Thursday: 9:00 AM - 5:30 PM</InforItem>
+            <InforItem>Thứ 2 - Thứ 6: 7:30 AM - 8:00 PM</InforItem>
           </InforIcon>
           <InforIcon><Email />
             <InforItem>shop@email.com</InforItem>
