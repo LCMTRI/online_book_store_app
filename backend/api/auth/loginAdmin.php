@@ -18,7 +18,7 @@ $user = new Admin($db);
 $data = json_decode(file_get_contents("php://input"));
 
 $user->username = $data->username;
-$user->password = $data->password;
+//$user->password = $data->password;
 
 if ($user->login()) {
     if (password_verify($data->password, $user->password)) {
