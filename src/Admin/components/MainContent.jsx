@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { ordersSelector } from "../store/reducers/ordersSlice";
+import {  ordersSelector, getAllOrder } from "../store/reducers/ordersSlice";
 // import { MainContentWrap } from "./style";
+import { useEffect } from "react";
 const MainContentWrap = styled.div`
   display: flex;
   /* margin-top: 50px; */
@@ -130,8 +131,12 @@ const CustomerName = styled.h4`
 // const Orders=styled.div``;
 const MainContent = () => {
   const navigate = useNavigate();
-
   const allOrder = useSelector(ordersSelector);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllOrder());
+  }, [dispatch]);
+  //const allOrder = useSelector(ordersSelector);
   return (
     <MainContentWrap>
       <Orders>
