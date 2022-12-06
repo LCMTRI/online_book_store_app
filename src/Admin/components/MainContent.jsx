@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { ordersSelector } from "../store/reducers/ordersSlice";
 // import { MainContentWrap } from "./style";
 const MainContentWrap = styled.div`
   display: flex;
@@ -128,6 +130,8 @@ const CustomerName = styled.h4`
 // const Orders=styled.div``;
 const MainContent = () => {
   const navigate = useNavigate();
+
+  const allOrder = useSelector(ordersSelector);
   return (
     <MainContentWrap>
       <Orders>
@@ -143,42 +147,28 @@ const MainContent = () => {
               <Tr>
                 <Th position="left">Name</Th>
                 <Th position="right">Price</Th>
-                <Th>Payment</Th>
+                <Th position="center">Ship</Th>
                 <Th position="right">Status</Th>
               </Tr>
 
-              <Tr>
-                <Td>Nguyen Tran Hoang</Td>
-                <Td>$1200</Td>
-                <Td>Paid</Td>
-                <Td>
-                  <Span color="green">Delivered</Span>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Nguyen Tran Hoang</Td>
-                <Td>$1200</Td>
-                <Td>Paid</Td>
-                <Td>
-                  <Span color="green">Delivered</Span>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Nguyen Tran Hoang</Td>
-                <Td>$1200</Td>
-                <Td>Paid</Td>
-                <Td>
-                  <Span color="green">Delivered</Span>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Nguyen Tran Hoang</Td>
-                <Td>$1200</Td>
-                <Td>Paid</Td>
-                <Td>
-                  <Span color="green">Delivered</Span>
-                </Td>
-              </Tr>
+              {allOrder.map((order) => {
+                return (
+                  <Tr>
+                    <Td>{order.name}</Td>
+                    <Td>{order.total}</Td>
+                    <Td>{order.total_ship}</Td>
+                    <Td>
+                      <Span
+                        style={{ marginLeft: "-12px" }}
+                        src=""
+                        color="green"
+                      >
+                        {order.state}
+                      </Span>
+                    </Td>
+                  </Tr>
+                )
+              })}
             </tbody>
           </Table>
         </OrderContent>
@@ -186,45 +176,17 @@ const MainContent = () => {
       <Custommers>
         <CustomerHeader>Recent Cusomer</CustomerHeader>
         <CustomerList>
-          <CustomerItem>
-            <CustomerImg src="https://res.cloudinary.com/dd8b69mls/image/upload/v1654857710/bmbahavxcxzrgkjrdrob.jpg"></CustomerImg>
-            <CustomerRight>
-              <CustomerName>Tran Hoang</CustomerName>
-              <CustomerCountry>Vietnam</CustomerCountry>
-            </CustomerRight>
-          </CustomerItem>
-
-          <CustomerItem>
-            <CustomerImg src="https://res.cloudinary.com/dd8b69mls/image/upload/v1654857710/bmbahavxcxzrgkjrdrob.jpg"></CustomerImg>
-            <CustomerRight>
-              <CustomerName>Tran Hoang</CustomerName>
-              <CustomerCountry>Vietnam</CustomerCountry>
-            </CustomerRight>
-          </CustomerItem>
-
-          <CustomerItem>
-            <CustomerImg src="https://res.cloudinary.com/dd8b69mls/image/upload/v1654857710/bmbahavxcxzrgkjrdrob.jpg"></CustomerImg>
-            <CustomerRight>
-              <CustomerName>Tran Hoang</CustomerName>
-              <CustomerCountry>Vietnam</CustomerCountry>
-            </CustomerRight>
-          </CustomerItem>
-
-          <CustomerItem>
-            <CustomerImg src="https://res.cloudinary.com/dd8b69mls/image/upload/v1654857710/bmbahavxcxzrgkjrdrob.jpg"></CustomerImg>
-            <CustomerRight>
-              <CustomerName>Tran Hoang</CustomerName>
-              <CustomerCountry>Vietnam</CustomerCountry>
-            </CustomerRight>
-          </CustomerItem>
-
-          <CustomerItem>
-            <CustomerImg src="https://res.cloudinary.com/dd8b69mls/image/upload/v1654857710/bmbahavxcxzrgkjrdrob.jpg"></CustomerImg>
-            <CustomerRight>
-              <CustomerName>Tran Hoang</CustomerName>
-              <CustomerCountry>Vietnam</CustomerCountry>
-            </CustomerRight>
-          </CustomerItem>
+          {allOrder.slice(0,5).map((order) => {
+            return (
+              <CustomerItem>
+                <CustomerImg src="https://res.cloudinary.com/dd8b69mls/image/upload/v1654857710/bmbahavxcxzrgkjrdrob.jpg"></CustomerImg>
+                <CustomerRight>
+                  <CustomerName>{order.name}</CustomerName>
+                  <CustomerCountry>Vietnam</CustomerCountry>
+                </CustomerRight>
+              </CustomerItem>
+            )
+          })}
         </CustomerList>
       </Custommers>
     </MainContentWrap>
