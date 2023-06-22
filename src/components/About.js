@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { Container, Row, Col } from "react-grid-system";
+import { Row, Col } from "react-grid-system";
 import Card from 'react-bootstrap/Card'
-import { useNavigate } from "react-router-dom";
 
 import Header from "./Header";
 import Footer from "./Footer";

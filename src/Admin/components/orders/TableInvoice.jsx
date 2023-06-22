@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { useSelector } from "react-redux";
-import { orderSingleSelector } from "../../store/reducers/ordersSlice";
-
 const Table = styled.table`
   width: 100%;
   border-collapse: collapse;

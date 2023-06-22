@@ -9,7 +9,7 @@ export const getAllUser = createAsyncThunk("user/all", async () => {
   return response.data;
 });
 export const toggleStatus = createAsyncThunk("user/toggle", async (id) => {
-  const res = await axios.get(
+  await axios.get(
     `http://localhost/ecommerce/backend/api/user/status.php?id=${id}`
   );
   return id;
